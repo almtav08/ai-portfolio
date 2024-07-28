@@ -1,0 +1,115 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--bg-color: #ffffff;
+		--text-color: #000;
+		--card-color: #f6f6f7;
+
+		--clr-1: #ff9d42;
+		--clr-2: #ff6d42;
+		--clr-3: #ff424b;
+	}
+
+	html {
+		background: var(--bg-color);
+		color: var(--text-color);
+	}
+
+	.mono-text {
+		font-family: ui-monospace, monospace;
+	}
+
+	.sans-text {
+		font-family: system-ui, sans-serif;
+	}
+
+	@property --grad-angle {
+		syntax: "<angle>";
+		initial-value: 0deg;
+		inherits: false;
+	}
+
+	@keyframes rotation {
+		0% { --grad-angle: 0deg; }
+		100% { --grad-angle: 360deg; }
+	}
+
+	.home-card {
+		border-radius: 0.3rem;
+		position: relative;
+	}
+
+	.home-card:hover::before,.home-card:hover::after {
+		content: "";
+		position: absolute;
+		background: conic-gradient(from var(--grad-angle), var(--clr-1), var(--clr-2), var(--clr-3), var(--clr-2), var(--clr-1));
+		inset: -0.25rem;
+		z-index: -1;
+		border-radius: 0.3rem;
+		animation: rotation 20s linear infinite;
+	}
+
+	.home-card:hover::after {
+		filter: blur(1rem);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--bg-color: #13151a;
+			--text-color: #fff;
+			--card-color: #202127;
+		}
+		
+	}
+
+	.flex {
+        display: flex;
+        flex-direction: var(--flex-direction, row);
+        flex-wrap: var(--flex-wrap, wrap);
+        gap: var(--gap, 1dvw);
+        justify-content: var(--justify-content, center);
+        align-items: var(--align-items, center);
+    }
+
+	body::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+    
+    body::-webkit-scrollbar:vertical {
+        width: 0.5rem;
+    }
+    
+    body::-webkit-scrollbar-button:increment,body::-webkit-scrollbar-button {
+        display: none;
+    } 
+    
+    body::-webkit-scrollbar-thumb {
+        background-color: #ff424b;
+    }
+    
+    body::-webkit-scrollbar-track {
+        background-color: var(--clr-background);
+    }
+
+</style>

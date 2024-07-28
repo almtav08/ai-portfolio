@@ -1,0 +1,45 @@
+---
+import Contact from '../components/Contact.astro';
+import Description from '../components/Description.astro';
+import Intro from '../components/Intro.astro';
+import Navbar from '../components/Navbar.astro';
+import Projects from '../components/Projects.astro';
+import Publications from '../components/Publications.astro';
+import WorkArea from '../components/WorkArea.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Alex Martinez-Martinez">
+	<Navbar active='home'></Navbar>
+	<main>
+		<div class="landing">
+			<Intro></Intro>
+			<Description></Description>
+			<WorkArea></WorkArea>
+			<Projects></Projects>
+			<Publications></Publications>
+			<Contact></Contact>	
+		</div>
+	</main>
+</Layout>
+
+<style>
+	main {
+		padding: 4rem 3rem 2rem 3rem;
+		font-size: 1.15rem;
+    	line-height: 1.25;
+	}
+
+	.landing {
+		padding: 2rem 2rem 0 2rem;
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-areas:
+			'intro intro intro intro'
+			'description description description work'
+			'projects projects projects projects'
+			'publications publications publications publications'
+			'contact contact contact contact';
+		gap: 1rem;
+	}
+</style>

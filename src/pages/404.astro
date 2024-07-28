@@ -1,0 +1,28 @@
+---
+
+import Navbar from '../components/Navbar.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Alex Martinez-Martinez">
+	<main>
+        <div class="not-found sans-text">
+            Oooops... you are looking for a page that does not exist.
+            <br>
+            Return to the <a href="/">home page</a>.
+        </div>
+	</main>
+</Layout>
+
+<style>
+	main {
+		padding: 4rem 3rem 2rem 3rem;
+		font-size: 1.15rem;
+    	line-height: 1.25;
+	}
+
+    .not-found {
+        margin: auto;
+        text-align: center;
+    }
+</style>
